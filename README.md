@@ -21,7 +21,7 @@ Packages installeds by default:
 
 #### CLI
 
-Was installed some functions and aliases for use in this box. The files `.functions` and `.aliases` are installed in `vagrant` user root folder and loaded in user login.
+Was installed some functions and aliases for use in this box. The files `.functions` and `.aliases` are installed for `vagrant` user root folder and loaded in user login.
 
 
 #### NodeJS
@@ -63,10 +63,12 @@ This will download and install the image, and then go through the dependencies a
 
 ### Connected Android Devices
 
-The image also has support for connected USB Android devices. To test whether devices are connected, you can run (from the box):
+The installation create an `adb` alias for use in CLI environment more easily. The image also has support for connected USB Android devices. To test whether devices are connected, you can run (from the box):
 
 ```bash
 $ sudo /home/vagrant/android-sdk-linux/platform-tools/adb devices
+# or
+$ sudo adb devices
 ```
 
 If that does not work, or shows `????? permissions`, then run:
@@ -74,4 +76,7 @@ If that does not work, or shows `????? permissions`, then run:
 ```bash
 sudo /home/vagrant/android-sdk-linux/platform-tools/adb kill-server
 sudo /home/vagrant/android-sdk-linux/platform-tools/adb start-server
+# or
+$ sudo adb kill-server
+$ sudo adb start-server
 ```
