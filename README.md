@@ -1,10 +1,10 @@
-Vagrant NG Box
+Vagrant Frontend Mobile Box
 =============================
 
 
-Vagrant NG Box is a ready-to-go hybrid development environment for building mobile apps with Ionic, Cordova, and Android based in Ionic Box, with some modifications. Vagrant NG Box was built to make it easier for developers to build Android versions of their app, and especially for Windows users to get a complete dev environment set up without all the headaches.
+Vagrant Frontend Mobile Box is a ready-to-go hybrid development environment for building mobile apps with Ionic, Cordova, and Android based in Ionic Box, with some modifications. Vagrant Frontend Mobile Box was built to make it easier for developers to build Android versions of their app, and especially for Windows users to get a complete dev environment set up without all the headaches.
 
-For iOS developers, Vagrant NG Box won't do much for you right now unless you are having trouble installing the Android SDK, and Vagrant NG Box cannot be used for iOS development for a variety of legal reasons (however, the `ionic package` command in beta will soon fix that).
+For iOS developers, Vagrant Frontend Mobile Box won't do much for you right now unless you are having trouble installing the Android SDK, and Vagrant Frontend Mobile Box cannot be used for iOS development for a variety of legal reasons (however, the `ionic package` command in beta will soon fix that).
 
 
 ### Default packages installed
