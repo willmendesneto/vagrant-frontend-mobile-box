@@ -7,11 +7,11 @@ ANDROID_SDK=http://dl.google.com/android/$ANDROID_SDK_FILENAME
 #sudo add-apt-repository ppa:webupd8team/java
 sudo apt-get update -y
 sudo apt-get install -y curl git git-core
-sudo apt-get install -y git openjdk-7-jdk ant expect
+sudo apt-get install -y openjdk-7-jdk ant expect
 #ADB Not Responding
 sudo apt-get install -y lib32z1 lib32z1-dev lib32stdc++6
 #apt-get install ruby-full
-sudo apt-get install -y build-essential openssl libreadline6 libreadline6-dev curl git-core zlib1g zlib1g-dev libssl-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt-dev autoconf libc6-dev ncurses-dev automake libtool bison subversion pkg-config
+sudo apt-get install -y build-essential openssl libreadline6 libreadline6-dev zlib1g zlib1g-dev libssl-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt-dev autoconf libc6-dev ncurses-dev automake libtool bison subversion pkg-config
 
 # Install pt_BR
 sudo locale-gen pt_BR.UTF-8
