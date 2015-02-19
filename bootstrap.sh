@@ -1,7 +1,13 @@
 #!/usr/bin/env bash
 
+# Configuration Variables
 ANDROID_SDK_FILENAME=android-sdk_r23.0.2-linux.tgz
 ANDROID_SDK=http://dl.google.com/android/$ANDROID_SDK_FILENAME
+
+# This boolean is used for load bash or zsh in your CLI environment
+# By default is loaded .bashrc, if you would like to use .zsh + oh-my-zsh in your CLI
+# modify the value for true
+INCLUDE_ZSH=false
 
 #sudo apt-get install python-software-properties
 #sudo add-apt-repository ppa:webupd8team/java
@@ -12,6 +18,7 @@ sudo apt-get install -y openjdk-7-jdk ant expect
 sudo apt-get install -y lib32z1 lib32z1-dev lib32stdc++6
 #apt-get install ruby-full
 sudo apt-get install -y build-essential openssl libreadline6 libreadline6-dev zlib1g zlib1g-dev libssl-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt-dev autoconf libc6-dev ncurses-dev automake libtool bison subversion pkg-config
+
 
 # Install pt_BR
 sudo locale-gen pt_BR.UTF-8
@@ -54,29 +61,42 @@ npm install -g karma
 curl -L http://goo.gl/2e3iWT > .functions
 curl -L http://goo.gl/ii1v3n > .aliases
 
-# Add new contents in .bashrc
-echo "" >> ~/.bashrc
-echo "" >> ~/.bashrc
-echo " # Source global definitions" >> ~/.bashrc
-echo "if [ -f ~/.functions ]; then" >> ~/.bashrc
-echo "  . ~/.functions" >> ~/.bashrc
-echo "fi" >> ~/.bashrc
-echo "" >> ~/.bashrc
-echo " # Source global definitions" >> ~/.bashrc
-echo "if [ -f ~/.aliases ]; then" >> ~/.bashrc
-echo "  . ~/.aliases" >> ~/.bashrc
-echo "fi" >> ~/.bashrc
-echo "" >> ~/.bashrc
-echo "" >> ~/.bashrc
-echo "export NVM_DIR=\"\$HOME/.nvm\"" >> ~/.bashrc
-echo "#Add new values from variable environment" >> ~/.bashrc
-echo "JAVA_HOME=/usr/lib/jvm/java-7-openjdk-i386/jre/bin/java" >> ~/.bashrc
-echo "ANDROID_HOME=~/android-sdk-linux" >> ~/.bashrc
-echo "PATH=\$PATH:~/android-sdk-linux/tools:~/android-sdk-linux/platform-tools:\$NVM_DIR/bin" >> ~/.bashrc
-# This loads nvm
-echo "[[ -s \"\$NVM_DIR/nvm.sh\" ]] && . \"\$NVM_DIR/nvm.sh\"" >> ~/.bashrc
+# ...zsh/bash verification ...
 
-source ~/.bashrc
+CLI_LOAD_FILE=~/.bashrc
+if [ "$INCLUDE_ZSH" = true ] ; then
+  # Zsh and Oh-My-Zsh installation
+  CLI_LOAD_FILE=~/.zshrc
+  sudo apt-get install -y zsh
+  git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
+  cp ~/.oh-my-zsh/templates/zshrc.zsh-template $CLI_LOAD_FILE
+  sudo chsh -s /bin/zsh vagrant
+  zsh
+fi
+
+# Add new contents in .zshrc/.bashrc
+echo "" >> $CLI_LOAD_FILE
+echo "" >> $CLI_LOAD_FILE
+echo " # Source global definitions" >> $CLI_LOAD_FILE
+echo "if [ -f ~/.functions ]; then" >> $CLI_LOAD_FILE
+echo "  . ~/.functions" >> $CLI_LOAD_FILE
+echo "fi" >> $CLI_LOAD_FILE
+echo "" >> $CLI_LOAD_FILE
+echo " # Source global definitions" >> $CLI_LOAD_FILE
+echo "if [ -f ~/.aliases ]; then" >> $CLI_LOAD_FILE
+echo "  . ~/.aliases" >> $CLI_LOAD_FILE
+echo "fi" >> $CLI_LOAD_FILE
+echo "" >> $CLI_LOAD_FILE
+echo "" >> $CLI_LOAD_FILE
+echo "export NVM_DIR=\"\$HOME/.nvm\"" >> $CLI_LOAD_FILE
+echo "#Add new values from variable environment" >> $CLI_LOAD_FILE
+echo "JAVA_HOME=/usr/lib/jvm/java-7-openjdk-i386/jre/bin/java" >> $CLI_LOAD_FILE
+echo "ANDROID_HOME=~/android-sdk-linux" >> $CLI_LOAD_FILE
+echo "PATH=\$PATH:~/android-sdk-linux/tools:~/android-sdk-linux/platform-tools:\$NVM_DIR/bin" >> $CLI_LOAD_FILE
+# This loads nvm
+echo "[[ -s \"\$NVM_DIR/nvm.sh\" ]] && . \"\$NVM_DIR/nvm.sh\"" >> $CLI_LOAD_FILE
+
+source $CLI_LOAD_FILE
 
 
 # Installs RubyGems
@@ -95,7 +115,7 @@ expect {
 }
 '
 # alias for adb
-echo "alias adb=\"/home/vagrant/android-sdk-linux/platform-tools/adb\"" >> /home/vagrant/.bashrc
+echo "alias adb=\"/home/vagrant/android-sdk-linux/platform-tools/adb\"" >> $CLI_LOAD_FILE
 
 sudo /home/vagrant/android-sdk-linux/platform-tools/adb kill-server
 sudo /home/vagrant/android-sdk-linux/platform-tools/adb start-server
