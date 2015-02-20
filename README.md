@@ -11,6 +11,7 @@ For iOS developers, Vagrant Frontend Mobile Box won't do much for you right now 
 
 Packages installeds by default:
 
+- ZSH + Oh-My-Zsh (optional);
 - Git;
 - Java;
 - "PT_BR" Package Language;
