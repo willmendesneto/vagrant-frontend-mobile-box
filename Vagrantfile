@@ -23,17 +23,17 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Create a forwarded port mapping which allows access to a specific port
   # within the machine from a port on the host machine. In the example below,
   # accessing "localhost:8080" will access port 80 on the guest machine.
-  config.vm.network "forwarded_port", guest: 80, host: 8080
-  config.vm.network "forwarded_port", guest: 8100, host: 8100
+  config.vm.network "forwarded_port", guest: 80, host: 8080, auto_correct: true
+  config.vm.network "forwarded_port", guest: 8100, host: 8100, auto_correct: true
   # node server port
-  config.vm.network "forwarded_port", guest: 9000, host: 9000
+  config.vm.network "forwarded_port", guest: 9000, host: 9000, auto_correct: true
   # node server unit test port
-  config.vm.network "forwarded_port", guest: 9001, host: 9001
+  config.vm.network "forwarded_port", guest: 9001, host: 9001, auto_correct: true
   # node server E2E tests port
-  config.vm.network "forwarded_port", guest: 4444, host: 4444
+  config.vm.network "forwarded_port", guest: 4444, host: 4444, auto_correct: true
   # grunt-connect livereload port
-  config.vm.network "forwarded_port", guest: 35729, host: 35729
-  config.vm.network "forwarded_port", guest: 9100, host: 9100
+  config.vm.network "forwarded_port", guest: 35729, host: 35729, auto_correct: true
+  config.vm.network "forwarded_port", guest: 9100, host: 9100, auto_correct: true
 
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
