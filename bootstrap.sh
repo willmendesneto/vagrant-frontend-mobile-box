@@ -116,6 +116,7 @@ expect {
 '
 # alias for adb
 echo "alias adb=\"/home/vagrant/android-sdk-linux/platform-tools/adb\"" >> $CLI_LOAD_FILE
+echo "alias vd=\"cd /vagrant_data\"" >> $CLI_LOAD_FILE
 
 sudo /home/vagrant/android-sdk-linux/platform-tools/adb kill-server
 sudo /home/vagrant/android-sdk-linux/platform-tools/adb start-server
