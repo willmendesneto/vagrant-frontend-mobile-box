@@ -68,7 +68,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   #   # allow the creation of symlinks for nvm
       vb.customize ["setextradata", :id, "VBoxInternal2/SharedFoldersEnableSymlinksCreate/vagrant", "1"]
   #   # Use VBoxManage to customize the VM. For example to change memory:
+      vb.customize ["modifyvm", :id, "--cpus", "1"]
       vb.customize ["modifyvm", :id, "--memory", "1024"]
+
     end
   #
   # View the documentation for the provider you're using for more
