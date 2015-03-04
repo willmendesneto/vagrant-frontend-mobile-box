@@ -11,7 +11,14 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # Every Vagrant virtual environment requires a box to build off of.
   config.vm.box = "ubuntu/trusty32"
-  config.vm.hostname = "ng-box"
+  config.vm.hostname = "vagrant-frontend-mobile-box"
+
+  # if Vagrant.has_plugin?("vagrant-hostmanager")
+  #   config.hostmanager.enabled = true
+  #   config.hostmanager.manage_host = true
+  #   config.hostmanager.ignore_private_ip = false
+  #   config.hostmanager.include_offline = false
+  # end
 
   config.vm.provision :shell, path: "bootstrap.sh", privileged: false
 
@@ -23,17 +30,17 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Create a forwarded port mapping which allows access to a specific port
   # within the machine from a port on the host machine. In the example below,
   # accessing "localhost:8080" will access port 80 on the guest machine.
-  config.vm.network "forwarded_port", guest: 80, host: 8080, auto_correct: true
-  config.vm.network "forwarded_port", guest: 8100, host: 8100, auto_correct: true
+  config.vm.network "forwarded_port", guest: 80, host: 8081, auto_correct: true
+  config.vm.network "forwarded_port", guest: 8100, host: 8200, auto_correct: true
   # node server port
-  config.vm.network "forwarded_port", guest: 9000, host: 9000, auto_correct: true
+  config.vm.network "forwarded_port", guest: 9000, host: 9200, auto_correct: true
   # node server unit test port
-  config.vm.network "forwarded_port", guest: 9001, host: 9001, auto_correct: true
+  config.vm.network "forwarded_port", guest: 9001, host: 9101, auto_correct: true
   # node server E2E tests port
-  config.vm.network "forwarded_port", guest: 4444, host: 4444, auto_correct: true
+  config.vm.network "forwarded_port", guest: 4444, host: 5444, auto_correct: true
   # grunt-connect livereload port
-  config.vm.network "forwarded_port", guest: 35729, host: 35729, auto_correct: true
-  config.vm.network "forwarded_port", guest: 9100, host: 9100, auto_correct: true
+  config.vm.network "forwarded_port", guest: 35729, host: 45729, auto_correct: true
+  config.vm.network "forwarded_port", guest: 9100, host: 9300, auto_correct: true
 
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
@@ -47,12 +54,14 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # If true, then any SSH connections made will enable agent forwarding.
   # Default value: false
   config.ssh.forward_agent = true
+  config.ssh.shell = "bash -c 'BASH_ENV=/etc/profile exec bash'"
 
   # Share an additional folder to the guest VM. The first argument is
   # the path on the host to the actual folder. The second argument is
   # the path on the guest to mount the folder. And the optional third
   # argument is a set of non-required options.
   config.vm.synced_folder "./projects", "/vagrant_data", create: true
+  # config.vm.synced_folder "./projects", "/vagrant_data", create: true, id: "core", :nfs => {:mount_options => ['dmode=777','fmode=777']}
 
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
@@ -68,12 +77,25 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   #   # allow the creation of symlinks for nvm
       vb.customize ["setextradata", :id, "VBoxInternal2/SharedFoldersEnableSymlinksCreate/vagrant", "1"]
   #   # Use VBoxManage to customize the VM. For example to change memory:
-      vb.customize ["modifyvm", :id, "--cpus", "1"]
       vb.customize ["modifyvm", :id, "--memory", "1024"]
+
+      # Set the timesync threshold to 10 seconds, instead of the default 20 minutes.
+      # If the clock gets more than 15 minutes out of sync (due to your laptop going
+      # to sleep for instance, then some 3rd party services will reject requests.
+      vb.customize ["guestproperty", "set", :id, "/VirtualBox/GuestAdd/VBoxService/--timesync-set-threshold", 10000]
     end
   #
   # View the documentation for the provider you're using for more
   # information on available options.
+
+
+    # Provider-specific configuration so you can fine-tune various
+    # backing providers for Vagrant. These expose provider-specific options.
+    config.vm.provider :lxc do |lxc|
+      lxc.customize 'cgroup.memory.limit_in_bytes', '1024M'
+      lxc.customize 'cgroup.cpu.shares', 1
+    end
+
 
   # Enable provisioning with CFEngine. CFEngine Community packages are
   # automatically installed. For example, configure the host as a

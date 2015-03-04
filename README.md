@@ -44,7 +44,7 @@ This vagrant box is using NVM (https://raw.github.com/creationix/nvm) with setup
 
 ### Provision
 
-This box is provisioned via shell script. If you would like to modify the package for your use, please take a look in [bootstrap.sh file](bootstrap.sh file)
+This box is provisioned via shell script. If you would like to modify the package for your use, please take a look in [bootstrap.sh file](bootstrap.sh)
 
 
 ### Installation

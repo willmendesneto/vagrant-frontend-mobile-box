@@ -91,8 +91,8 @@ echo "" >> $CLI_LOAD_FILE
 echo "export NVM_DIR=\"\$HOME/.nvm\"" >> $CLI_LOAD_FILE
 echo "#Add new values from variable environment" >> $CLI_LOAD_FILE
 echo "JAVA_HOME=/usr/lib/jvm/java-7-openjdk-i386/jre/bin/java" >> $CLI_LOAD_FILE
-echo "ANDROID_HOME=~/android-sdk-linux" >> $CLI_LOAD_FILE
-echo "PATH=\$PATH:~/android-sdk-linux/tools:~/android-sdk-linux/platform-tools:\$NVM_DIR/bin" >> $CLI_LOAD_FILE
+echo "ANDROID_HOME=~/android-sdk-linux/sdk" >> $CLI_LOAD_FILE
+echo "export PATH=\$PATH:~/android-sdk-linux/tools:~/android-sdk-linux/platform-tools:\$NVM_DIR/bin" >> $CLI_LOAD_FILE
 # This loads nvm
 echo "[[ -s \"\$NVM_DIR/nvm.sh\" ]] && . \"\$NVM_DIR/nvm.sh\"" >> $CLI_LOAD_FILE
 
