@@ -15,7 +15,7 @@ sudo apt-get update -y
 sudo apt-get install -y curl git git-core
 sudo apt-get install -y openjdk-7-jdk ant expect
 #ADB Not Responding
-sudo apt-get install -y lib32z1 lib32z1-dev lib32stdc++6
+sudo apt-get install -y lib32z1 lib32z1-dev lib32stdc++6 tmux
 #apt-get install ruby-full
 sudo apt-get install -y build-essential openssl libreadline6 libreadline6-dev zlib1g zlib1g-dev libssl-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt-dev autoconf libc6-dev ncurses-dev automake libtool bison subversion pkg-config
 
