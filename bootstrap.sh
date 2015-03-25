@@ -106,6 +106,11 @@ sudo update_rubygems
 sudo gem install sass
 sudo apt-get install -y ruby-compass
 
+# Install code for course
+# If you need, please remove the coments
+# cd /vagrant_data && git clone https://github.com/willmendesneto/angularjs-course.git
+
+
 expect -c '
 set timeout -1   ;
 spawn /home/vagrant/android-sdk-linux/tools/android update sdk -u --all --filter platform-tool,android-19,build-tools-19.1.0
@@ -121,3 +126,5 @@ echo "alias vd=\"cd /vagrant_data\"" >> $CLI_LOAD_FILE
 sudo /home/vagrant/android-sdk-linux/platform-tools/adb kill-server
 sudo /home/vagrant/android-sdk-linux/platform-tools/adb start-server
 sudo /home/vagrant/android-sdk-linux/platform-tools/adb devices
+
+
