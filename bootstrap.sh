@@ -40,8 +40,8 @@ nvm use 0.10.33
 nvm alias default 0.10.33
 
 # Update NPM
-# npm update -g npm@latest
-npm update -g npm@2.2.0
+# npm install -g npm@latest
+npm install -g npm@2.2.0
 
 # Install Node Packages
 npm install -g cordova
