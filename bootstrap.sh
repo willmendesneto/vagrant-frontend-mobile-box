@@ -53,6 +53,7 @@ npm install -g jshint
 npm install -g protractor
 npm install -g gulp
 npm install -g karma
+npm install -g trash
 
 # Install Yeoman Generator
 
