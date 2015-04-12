@@ -57,9 +57,10 @@ npm install -g karma
 # Install Yeoman Generator
 
 
-# Add .function and .aliases files in box
+# Add .function, .aliases and Z files in box
 curl -L http://goo.gl/2e3iWT > .functions
 curl -L http://goo.gl/ii1v3n > .aliases
+curl -L http://goo.gl/AXbM5B > z.sh
 
 # ...zsh/bash verification ...
 
@@ -86,6 +87,9 @@ echo " # Source global definitions" >> $CLI_LOAD_FILE
 echo "if [ -f ~/.aliases ]; then" >> $CLI_LOAD_FILE
 echo "  . ~/.aliases" >> $CLI_LOAD_FILE
 echo "fi" >> $CLI_LOAD_FILE
+echo "" >> $CLI_LOAD_FILE
+echo "# Include Z, yo file" >> $CLI_LOAD_FILE
+echo ". ~/z.sh" >> $CLI_LOAD_FILE
 echo "" >> $CLI_LOAD_FILE
 echo "" >> $CLI_LOAD_FILE
 echo "export NVM_DIR=\"\$HOME/.nvm\"" >> $CLI_LOAD_FILE
