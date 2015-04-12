@@ -12,6 +12,7 @@ For iOS developers, Vagrant Frontend Mobile Box won't do much for you right now 
 Packages installeds by default:
 
 - ZSH + Oh-My-Zsh (optional);
+- Z CLI package;
 - Git;
 - Java;
 - "PT_BR" Package Language;
@@ -40,6 +41,7 @@ This vagrant box is using NVM (https://raw.github.com/creationix/nvm) with setup
 - jshint;
 - protractor;
 - karma;
+- trash;
 
 
 ### Provision
