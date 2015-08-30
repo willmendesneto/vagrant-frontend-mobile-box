@@ -99,6 +99,7 @@ npm install -g npm@2.11.2
 # Install Node Packages
 npm install -g cordova
 npm install -g ionic
+npm install -g ios-sim
 npm install -g yo
 npm install -g bower
 npm install -g grunt-cli

@@ -30,10 +30,11 @@ Was installed some functions and aliases for use in this box. The files `.functi
 
 This vagrant box is using NVM (https://raw.github.com/creationix/nvm) with setup:
 
-- NodeJS (Version 0.10.33);
-- NPM (Version 2.2.0);
+- NodeJS (Version 0.12.5);
+- NPM (Version 2.11.2);
 - cordova;
 - ionic;
+- ios-sim;
 - yeoman;
 - bower;
 - grunt-cli;
